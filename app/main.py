@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 
 from app.api.v1.auth import router as auth_router
+from app.api.v1.referrals import router as referrals_router
 from app.core.config import settings
 from app.core.exceptions import register_exception_handlers
 
@@ -13,6 +14,7 @@ app = FastAPI(
 register_exception_handlers(app)
 
 app.include_router(auth_router)
+app.include_router(referrals_router)
 
 
 @app.get("/health", tags=["Health"])
